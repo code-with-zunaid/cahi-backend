@@ -2,9 +2,11 @@
   "name": "chai-backend2",
   "version": "1.0.0",
   "description": "i am starting a backend series with the help of chai or code chainel which is coduct by Hetish chaudhary",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
+    "dev":"nodemon src/index.js"
   },
   "keywords": [
     "javascript",
@@ -12,5 +14,8 @@
     "chai"
   ],
   "author": "Zunaid Alam",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }
