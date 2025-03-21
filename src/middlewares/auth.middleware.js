@@ -7,7 +7,7 @@ export const verifyJWT = asyncHandler(async(req, _ ,next)=>{
     try {
         const token=req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer","")
         
-        console.log("token is :",token);
+        
         
 
         if(!token){
@@ -17,15 +17,14 @@ export const verifyJWT = asyncHandler(async(req, _ ,next)=>{
         const decodedToken=jwt.verify(token,
             process.env.ACCESS_TOKEN_SECRET)
     
-        console.log("decoded token is :",decodedToken)
-
+        
 
        const user= await User.findById(decodedToken?._id)
        .select("-password -refreshToken") 
        
        
        
-        console.log("user is :",user)
+        
 
        if(!user){
         //NEXT VIDE disscuss about forntend
@@ -33,6 +32,7 @@ export const verifyJWT = asyncHandler(async(req, _ ,next)=>{
        }
     
        req.user=user
+       
        next()
     } catch (error) {
         throw new ApiError(401,error?.message|| "inavalid acess token")
